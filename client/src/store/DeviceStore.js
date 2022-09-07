@@ -4,11 +4,17 @@ export default class DeviceStore {
     constructor() {
         this._types = [
             {id: 1, name: 'Холодильники'},
-            {id: 2, name: 'Холод'}
+            {id: 2, name: 'Смартфоны'},
+            {id: 3, name: 'Ноутбуки'},
+            {id: 4, name: 'Наушники'},
         ]
         this._brands = [
             {id: 1, name: 'Samsung'},
             {id: 2, name: 'Xiaomi'},
+            {id: 3, name: 'Apple'},
+            {id: 4, name: 'Huawei'},
+            {id: 5, name: 'Motorolla'},
+            {id: 6, name: 'Nokia'},
         ]
         this._devices = [
             {id: 1, name: 'IPhone 10', price: 25000, rating: 5, img: 'https://main-cdn.sbermegamarket.ru/hlr-system/1691563/100023348274b0.jpg'},
@@ -17,6 +23,8 @@ export default class DeviceStore {
             {id: 4, name: 'IPhone 10', price: 25000, rating: 5, img: 'https://main-cdn.sbermegamarket.ru/hlr-system/1691563/100023348274b0.jpg'},
             {id: 5, name: 'IPhone 10', price: 25000, rating: 5, img: 'https://main-cdn.sbermegamarket.ru/hlr-system/1691563/100023348274b0.jpg'}
         ]
+        this._selectedType = {}
+        this._selectedBrand = {}
         makeAutoObservable(this)
     }
 
@@ -29,6 +37,12 @@ export default class DeviceStore {
     setDevices(devices) {
         this._devices = devices
     }
+    setSelectedType(type) {
+        this._selectedType = type
+    }
+    setSelectedBrand(brand) {
+        this._selectedBrand = brand
+    }
 
     get types() {
         return this._types
@@ -38,5 +52,11 @@ export default class DeviceStore {
     }
     get devices() {
         return this._devices
+    }
+    get selectedType() {
+        return this._selectedType
+    }
+    get selectedBrand() {
+        return this._selectedBrand
     }
 }
