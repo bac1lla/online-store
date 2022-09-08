@@ -13,7 +13,7 @@ export default class DeviceStore {
             {id: 2, name: 'Xiaomi'},
             {id: 3, name: 'Apple'},
             {id: 4, name: 'Huawei'},
-            {id: 5, name: 'Motorolla'},
+            {id: 5, name: 'Siemens'},
             {id: 6, name: 'Nokia'},
         ]
         this._devices = [
