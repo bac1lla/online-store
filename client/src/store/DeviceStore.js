@@ -2,29 +2,14 @@ import {makeAutoObservable} from "mobx";
 
 export default class DeviceStore {
     constructor() {
-        this._types = [
-            {id: 1, name: 'Холодильники'},
-            {id: 2, name: 'Смартфоны'},
-            {id: 3, name: 'Ноутбуки'},
-            {id: 4, name: 'Наушники'},
-        ]
-        this._brands = [
-            {id: 1, name: 'Samsung'},
-            {id: 2, name: 'Xiaomi'},
-            {id: 3, name: 'Apple'},
-            {id: 4, name: 'Huawei'},
-            {id: 5, name: 'Siemens'},
-            {id: 6, name: 'Nokia'},
-        ]
-        this._devices = [
-            {id: 1, name: 'IPhone 10', price: 25000, rating: 5, img: 'https://main-cdn.sbermegamarket.ru/hlr-system/1691563/100023348274b0.jpg'},
-            {id: 2, name: 'IPhone 10', price: 25000, rating: 5, img: 'https://main-cdn.sbermegamarket.ru/hlr-system/1691563/100023348274b0.jpg'},
-            {id: 3, name: 'IPhone 10', price: 25000, rating: 5, img: 'https://main-cdn.sbermegamarket.ru/hlr-system/1691563/100023348274b0.jpg'},
-            {id: 4, name: 'IPhone 10', price: 25000, rating: 5, img: 'https://main-cdn.sbermegamarket.ru/hlr-system/1691563/100023348274b0.jpg'},
-            {id: 5, name: 'IPhone 10', price: 25000, rating: 5, img: 'https://main-cdn.sbermegamarket.ru/hlr-system/1691563/100023348274b0.jpg'}
-        ]
+        this._types = []
+        this._brands = []
+        this._devices = []
         this._selectedType = {}
         this._selectedBrand = {}
+        this._page = 1
+        this._totalCount = 0
+        this._limit = 3
         makeAutoObservable(this)
     }
 
@@ -37,11 +22,20 @@ export default class DeviceStore {
     setDevices(devices) {
         this._devices = devices
     }
+
     setSelectedType(type) {
+        this.setPage(1)
         this._selectedType = type
     }
     setSelectedBrand(brand) {
+        this.setPage(1)
         this._selectedBrand = brand
+    }
+    setPage(page) {
+        this._page = page
+    }
+    setTotalCount(count) {
+        this._totalCount = count
     }
 
     get types() {
@@ -58,5 +52,14 @@ export default class DeviceStore {
     }
     get selectedBrand() {
         return this._selectedBrand
+    }
+    get totalCount() {
+        return this._totalCount
+    }
+    get page() {
+        return this._page
+    }
+    get limit() {
+        return this._limit
     }
 }
